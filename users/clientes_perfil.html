@@ -1,0 +1,137 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Página del usuario</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: gray;
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: white;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                border-radius: 5px;
+            }
+            .logo {
+                display: block;
+                width: 150px;
+                height: 150px;
+                margin: 0 auto 20px;
+                background-color: white;
+                border-radius: auto;
+                background-image: url('../img/itech.PNG');
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #007bff;
+            }
+            .profile {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            .avatar {
+                width: 100px;
+                height: 100px;
+                background-color: #ccc;
+                border-radius: 50%;
+                margin-right: 20px;
+                background-image: url('../img/mujer2.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            .info {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            .button {
+                padding: 10px 15px;
+                font-size: 16px;
+                color: white;
+                background-color: #007bff;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+                margin-top: 20px;
+                width: 100%;
+            }
+            .button:hover {
+                background-color: #0056b3;
+            }
+            .logout-button {
+                width: 100%;
+                padding: 8px 15px;
+                font-size: 14px;
+                color: red;
+                background-color: transparent;
+                border: 1px solid red;
+                border-radius: 3px;
+                cursor: pointer;
+                margin-top: 10px;
+            }
+            .logout-button:hover {
+                background-color: red;
+                color: white;
+            }
+
+            .back-button {
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #008000;
+            background-color: transparent;
+            border: 1px solid #008000;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .back-button:hover {
+            background-color: #008000;
+            color: white;
+        }
+
+        </style>
+         <script>
+        function confirmLogout() {
+            var nombre = document.getElementById("nombre").innerText;
+            var confirmar = confirm("¿Estás seguro de que deseas desconectarte, " + nombre + "?");
+            if (confirmar) {
+                window.location.href = '../general/logout.html';
+            }
+        }
+
+    </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="logo"></div>
+            <h1><u>-=|Perfil - Usuario|=-</u></h1>
+            <div class="profile">
+                <div class="avatar"></div>
+                <div class="info">
+                    <p><strong>Nombre:</strong> <span id="nombre">Maria Pérez</span></p>
+                    <p><strong>Correo:</strong> maria.perez@gmail.com</p>
+                    <p><strong>Dirección:</strong> Katuete - Paraguay</p>
+                </div>
+            </div>
+            <button class="button" onclick="window.location.href='../users/soporte_solic.html';">Solicitar Soporte Técnico</button>
+            <button class="back-button" onclick="window.location.href='../users/soporte_abierto.html';">Soportes en Abierto</button>
+            <button class="logout-button" onclick="confirmLogout();">Desconectar</button>
+        
+    </div>
+
+    </body>
+    </html>

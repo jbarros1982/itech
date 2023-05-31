@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitud de Asistencia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: gray;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .logo {
+            display: block;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            background-color: white;
+            border-radius: auto;
+            background-image: url('../img/itech.PNG');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .user-info {
+            display: flex;
+            align-items: left;
+            margin-bottom: 20px;
+            flex-direction: column;
+        }
+
+        .user-details {
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .user-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-image: url('../img/mujer2.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .user-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        select, textarea, input {
+            display: block;
+            width: 100%;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        form {
+            margin-top: 20px;
+        }
+        .request-button {
+          padding: 10px 15px;
+          font-size: 16px;
+          color: white;
+          background-color: #007bff;
+          border: none;
+          border-radius: 3px;
+          cursor: pointer;
+          margin-top: 20px;
+          width: 100%;
+      }
+      .request-button:hover {
+        background-color: #0056b3;
+        color: white;
+    }
+    .back-btn {
+        padding: 10px 15px;
+        font-size: 16px;
+        color: #007bff;
+        background-color: transparent;
+        border: 1px solid #007bff;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 10px;
+        width: 100%;
+    }
+    .back-btn:hover {
+        background-color: #007bff;
+        color: white;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <h1>-=|Solicitud de Soporte Técnico|=-</h1>
+        <div class="user-info">
+            <div class="user-avatar"></div>
+            <div class="user-details">
+                <div class="user-name" id="user-name">Maria Pérez</div>
+                <div class="user-mail"><i>maria.perez@gmail.com</i></div>
+            </div>
+            <form id="request-form">
+                <label for="specialty">Especialidad requerida:</label>
+                <select id="specialty" name="specialty">
+                    <option value="seguridad">Seguridad Informática</option>
+                    <option value="optimizacion">Configuración de Sistemas</option>
+                    <option value="perifericos">Configuración de Periféricos</option>
+                    <option value="recuperacion">Recuperación de Datos</option>
+                    <option value="consultoria">Consultoría Tecnológica</option>
+                </select>
+                <label for="priority">Prioridad/Urgencia:</label>
+                <select id="priority" name="priority">
+                    <option value="baja">Baja</option>
+                    <option value="media">Media</option>
+                    <option value="alta">Alta</option>
+                    <option value="urgente">Urgente</option>
+                </select>
+                <label for="description">Descripción del problema:</label>
+                <textarea id="description" name="description" rows="4" placeholder="Por favor, inserte una breve descripción del problema..."></textarea>
+                <label for="file">Adjuntar archivos (opcional):</label>
+                <input type="file" id="file" name="file" multiple>
+                <button class="request-button">Crear Solicitud</button>
+            </form>
+            <button class="back-btn" onclick="window.location.href='../users/clientes_perfil.html';">Volver</button>
+        </div>
+        <script>
+          document.querySelector('.back-btn').addEventListener('click', function() {
+            window.history.back();
+        });
+
+          document.getElementById('request-form').addEventListener('submit', function(event) {
+            var descriptionField = document.getElementById('description');
+            var description = descriptionField.value.trim();
+            if (description === '') {
+                var userName = document.getElementById('user-name').innerText;
+                alert('Por favor, ' + userName + ', completa la descripción del problema.');
+                    event.preventDefault(); // Previene la acción por defecto del botón de envío del formulario (enviar el formulario)
+                } else {
+                    // genera un número de solicitud aleatorio entre 10000 y 99999
+                    //var requestNumber = Math.floor(Math.random() * 90000) + 10000;
+                    var requestNumber = 11278;
+                    alert('La solicitud ha sido creada con éxito. Tu número de solicitud es: ' + requestNumber);
+                    descriptionField.value = ''; // Limpia el campo de descripción
+                    event.preventDefault(); // Previene el envío real del formulario para demostración
+                }
+            });
+        </script>
+    </body>
+    </html>

@@ -1,0 +1,194 @@
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>ITech</title>
+                        <style>
+                            body {
+                                font-family: Arial, sans-serif;
+                                background-color: gray;
+                            }
+                            .container {
+                                max-width: 800px;
+                                margin: 0 auto;
+                                padding: 20px;
+                                background-color: white;
+                                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                                border-radius: 5px;
+                            }
+                            .logo {
+                             display: block;
+                             width: 300px;
+                             height: 300px;
+                             margin: 0 auto 20px;
+                             background-color: white;
+                             border-radius: auto;
+                             background-image: url('../itech/img/itech.png');
+                             background-size: contain;
+                             background-position: center;
+                             background-repeat: no-repeat;
+                         }
+                         h1 {
+                            text-align: center;
+                            margin-bottom: 20px;
+                            color: #007bff;
+                        }
+                        
+                        .services-list {
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: space-between;
+                        }
+                        .service-item {
+                            flex: 0 0 calc(50% - 20px);
+                            margin-bottom: 20px;
+                        }
+                        .service-title {
+                            font-size: 18px;
+                            font-weight: bold;
+                            color: #007bff;
+                            margin-bottom: 5px;
+                        }
+                        .service-description {
+                            font-size: 14px;
+                            margin-bottom: 5px;
+                        }
+                        .service-button {
+                            padding: 8px 15px;
+                            font-size: 14px;
+                            color: #007bff;
+                            background-color: transparent;
+                            border: 1px solid #007bff;
+                            border-radius: 3px;
+                            cursor: pointer;
+                        }
+                        .service-button:hover {
+                            background-color: #007bff;
+                            color: white;
+                        }
+                        .footer-buttons {
+                            display: flex;
+                            justify-content: center;
+                        }
+                        .footer-button {
+                            padding: 10px 15px;
+                            font-size: 14px;
+                            color: #007bff;
+                            background-color: transparent;
+                            border: 1px solid #007bff;
+                            border-radius: 3px;
+                            cursor: pointer;
+                            margin-right: 10px;
+                        }
+                        .footer-button:last-child {
+                            margin-right: 0;
+                        }
+                        .footer-button:hover {
+                            background-color: #007bff;
+                            color: white;
+                        }
+                        .footer-buttons {
+                          display: flex;
+                          flex-direction: column;
+                          align-items: stretch;
+                          justify-content: center;
+                          margin-top: 20px;
+                      }
+                      .footer-button {
+                       padding: 10px 15px;
+                       font-size: 16px;
+                       color: white;
+                       background-color: #007bff;
+                       border: none;
+                       border-radius: 3px;
+                       cursor: pointer;
+                       margin-bottom: 10px;
+                       width: 100%;
+                       text-align: center;
+                   }
+                   .footer-button:hover {
+                    background-color: #0056b3;
+                }
+                .footer-button.back-btn {
+                    color: #007bff;
+                    background-color: transparent;
+                    border: 1px solid #007bff;
+                }
+                .footer-button.back-btn:hover {
+                    background-color: #007bff;
+                    color: white;
+                }
+
+                .become-technician {
+                    position: relative;
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                .become-technician button {
+                    width: 100%;
+                    padding: 8px 15px;
+                    font-size: 14px;
+                    color: red;
+                    background-color: transparent;
+                    border: 1px solid red;
+                    border-radius: 3px;
+                    cursor: pointer;
+
+                }
+                .become-technician button:hover {
+                    background-color: red;
+                    color: white;
+                }
+
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="logo"></div>
+                <div class="become-technician">
+
+                </div>
+                <div class="services-list">
+                    <div class="service-item">
+                        <div class="service-title">Configuración y Optimización del Sistema</div>
+                        <div class="service-description">Brindamos asesoría personalizada para configurar y optimizar tu sistema operativo y software.</div>
+                        <button class="service-button">Saber más</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-title">Solución de Problemas de Software</div>
+                        <div class="service-description">Ofrecemos soporte para solucionar problemas relacionados con el software de tu dispositivo, incluyendo aplicaciones y sistemas operativos.</div>
+                        <button class="service-button">Saber más</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-title">Recuperación de Datos</div>
+                        <div class="service-description">Ayudamos en la recuperación de datos perdidos y brindamos soluciones para respaldo de tus archivos.</div>
+                        <button class="service-button">Saber más</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-title">Asesoría y Soporte en Seguridad</div>
+                        <div class="service-description">Brindamos asesoría y soporte en seguridad informática, protegiendo tus dispositivos y sistemas contra amenazas y vulnerabilidades.</div>
+                        <button class="service-button">Saber más</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-title">Eliminación de virus y malware</div>
+                        <div class="service-description">Te ayudamos a eliminar virus, malware y otros tipos de amenazas de seguridad informática.</div>
+                        <button class="service-button">Saber más</button>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-title">Consultoría Tecnológica</div>
+                        <div class="service-description">Brindamos consultoría personalizada para ayudarte a tomar decisiones informadas en la compra de equipos electrónicos y la implementación de proyectos tecnológicos.</div>
+                        <button class="service-button">Saber más</button>
+                    </div>
+                </div>
+                <div class="footer-buttons">
+                    <button class="footer-button" onclick="window.location.href='../itech/users/clientes.html';">Registrarse</button>
+                    <button class="footer-button" onclick="window.location.href='../itech/general/login.html';">Acceder</button>
+                </div>
+                <div class="become-technician">
+                    <button onclick="window.location.href='../itech/techs/tecnicos.html';"><strong>Soy técnico</strong></button>
+                </div>
+            </div>
+        </body>
+        </html>
+

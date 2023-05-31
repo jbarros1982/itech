@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuarios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: gray;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .logo {
+            display: block;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            background-color: white;
+            border-radius: auto;
+            background-image: url('../img/itech.PNG');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea, select {
+            margin-bottom: 10px;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            outline: none;
+        }
+        input:focus, textarea:focus, select:focus {
+            border-color: #007bff;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .back-btn {
+            padding: 10px 15px;
+            font-size: 14px;
+            color: #007bff;
+            background-color: transparent;
+            border: 1px solid #007bff;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .back-btn:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+    <script>
+        // Crea una variable para rastrear si el formulario ha sido enviado
+        var formEnviado = false;
+
+        function validarFormulario() {
+            const nombreCompleto = document.getElementById("nombre-completo").value;
+            const correo = document.getElementById("correo-electronico").value;
+            const contrasena = document.getElementById("crear-contrasena").value;
+            const confirmarContrasena = document.getElementById("confirmar-contrasena").value;
+            const telefono = document.getElementById("numero-telefono").value;
+            const direccion = document.getElementById("direccion").value;
+
+              // Verificar si el nombre completo está vacío
+            if (!nombreCompleto) {
+                alert("Por favor, inserta tu nombre completo.");
+                return false;
+            }
+
+            // Verificar si el correo está vacío
+            if (!correo) {
+                alert("Por favor, inserta un correo válido.");
+                return false;
+            }
+
+            // Verificar si el formato del correo es correcto
+            const re = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+            if (!re.test(correo)) {
+                alert("Formato de correo electrónico inválido.");
+                return false;
+            }
+
+            // Verificar si las contraseñas coinciden
+            if (contrasena !== confirmarContrasena) {
+                alert("Las contraseñas no coinciden. Por favor, asegúrate de que las contraseñas coincidan.");
+                return false;
+            }
+
+            // Verificar si el número de teléfono está vacío
+            if (!telefono) {
+                alert("Por favor, inserta un número de teléfono.");
+                return false;
+            }
+
+              // Verificar si el número de teléfono contiene solo números
+            const telefonoRegex = /^\d+$/;
+            if (!telefono.match(telefonoRegex)) {
+                alert("Por favor, inserta solo números en el número de teléfono.");
+                return false;
+            }
+
+            // Verificar si la dirección está vacía
+            if (!direccion) {
+                alert("Por favor, inserta una dirección.");
+                return false;
+            }
+
+            // Si todo está bien, permitir el envío del formulario
+            formEnviado = true;
+            alert("Tu registro ha sido exitoso. Disfrutes de nuestros servicios, " + nombreCompleto + ".");
+            return true;
+        }
+
+        window.onbeforeunload = function() {
+            if (!formEnviado) {
+                return "¿Seguro que quieres salir? Aún no has guardado tu registro.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <h1>-=|Registro de Usuarios|=-</h1>
+        <form onsubmit="return validarFormulario()">
+            <label for="nombre-completo">Nombre completo:</label>
+            <input type="text" id="nombre-completo">
+            <label for="correo-electronico">Correo electrónico:</label>
+            <input type="email" id="correo-electronico">
+            <label for="crear-contrasena">Crear contraseña:</label>
+            <input type="password" id="crear-contrasena">
+            <label for="confirmar-contrasena">Confirmar contraseña:</label>
+            <input type="password" id="confirmar-contrasena">
+            <label for="numero-telefono">Número de teléfono:</label>
+            <input type="tel" id="numero-telefono">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion">
+            <button type="submit">Guardar</button>
+            <button type="button" onclick="window.location.href='../index.html';" class="back-btn">Volver</button>
+        </form>
+        </div>
+    </body>
+    </html>
+
+  

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte Finalizado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center;
+        }
+        .logo {
+            display: block;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            background-color: white;
+            border-radius: auto;
+            background-image: url('../img/itech.PNG');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .satisfaction-container {
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .satisfaction-container p {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .satisfaction-container label {
+            margin-right: 10px;
+        }
+        .satisfaction-container input[type="radio"] {
+            margin-right: 5px;
+        }
+        .reason-container {
+            margin-bottom: 20px;
+        }
+        .reason-container textarea {
+            width: 100%;
+            padding: 5px;
+            font-size: 14px;
+            resize: vertical;
+        }
+        .payment-info {
+            margin-bottom: 20px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+        .payment-info p {
+            margin-bottom: 5px;
+        }
+        .finish-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .finish-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <h1>Soporte Finalizado</h1>
+        <p>Ticket de Soporte Nº 11278</p>
+        <p><span id="time"></span> </p>
+        <p>Precio Total ₲$ 100,000</p>
+        <div class="satisfaction-container">
+            <p><u>Satisfacción:</u></p>
+            <br>
+            <label for="excellent">Excelente</label>
+            <input type="radio" id="excellent" name="satisfaction" value="excelente">
+            <label for="good">Bom</label>
+            <input type="radio" id="good" name="satisfaction" value="bom">
+            <label for="regular">Regular</label>
+            <input type="radio" id="regular" name="satisfaction" value="regular">
+            <label for="poor">Malo</label>
+            <input type="radio" id="poor" name="satisfaction" value="malo">
+        </div>
+        <div class="reason-container" id="reason-container" style="display: none;">
+            <textarea id="reason-text" placeholder="Por favor, indique por qué fue malo"></textarea>
+        </div>
+        <div class="payment-info">
+            <p><u><strong>Datos para pagamento:</strong></u></p>
+            <br>
+            <p>Banco Interfisa, Cuenta Nº 10271177</p>
+            <p>Giros Tigo al 0985624533</p>
+        </div>
+        <button class="finish-button" onclick="window.location.href='../users/clientes_perfil.html';">Confirmar</button>
+    </div>
+
+    <script>
+        const timeElement = document.getElementById('time');
+        const reasonContainer = document.getElementById('reason-container');
+        const reasonTextElement = document.getElementById('reason-text');
+
+        // Recupera los parámetros de tiempo de la URL (suponiendo que se pasa como parámetro GET)
+        const urlParams = new URLSearchParams(window.location.search);
+        const time = urlParams.get('time');
+
+        // Actualiza los elementos correspondientes con la información recuperada
+        timeElement.textContent = time;
+
+        // Muestra el campo de texto del motivo si se selecciona "Malo" en la satisfacción
+        document.querySelectorAll('input[name="satisfaction"]').forEach((radio) => {
+            radio.addEventListener('change', function() {
+                if (this.value === 'malo') {
+                    reasonContainer.style.display = 'block';
+                } else {
+                    reasonContainer.style.display = 'none';
+                }
+            });
+        });
+
+        function submitForm() {
+            // Recupera los valores seleccionados por el usuario
+            const satisfactionValue = document.querySelector('input[name="satisfaction"]:checked').value;
+            const reasonText = reasonTextElement.value;
+
+            // Aquí puedes realizar cualquier acción necesaria con los valores recuperados, como enviarlos a un servidor
+
+            // Redirige al usuario a la página de perfil
+            window.location.href = 'clientes_perfil.html';
+        }
+    </script>
+</body>
+</html>
+

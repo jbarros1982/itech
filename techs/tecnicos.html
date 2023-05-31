@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Técnicos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: gray;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .logo {
+         display: block;
+         width: 150px;
+         height: 150px;
+         margin: 0 auto 20px;
+         background-color: white;
+         border-radius: auto;
+         background-image: url('../img/itech.PNG');
+         background-size: contain;
+         background-position: center;
+         background-repeat: no-repeat;
+     }
+     h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #007bff;
+    }
+    form {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    label {
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    input, textarea, select {
+        margin-bottom: 10px;
+        padding: 8px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        outline: none;
+    }
+    input:focus, textarea:focus, select:focus {
+        border-color: #007bff;
+    }
+    button {
+        padding: 10px 15px;
+        font-size: 16px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    #checkbox-container {
+        border: 2px solid #007bff;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+    .back-btn {
+        padding: 10px 15px;
+        font-size: 14px;
+        color: #007bff;
+        background-color: transparent;
+        border: 1px solid #007bff;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+    .back-btn:hover {
+        background-color: #007bff;
+        color: white;
+    }
+</style>
+<script>
+        // Crea una variable para rastrear si el formulario ha sido enviado
+        var formEnviado = false;
+
+        // Funcion para ocultar checkbox "otro" hasta que sea seleccionado
+            function mostrarOcultarOtro() {
+                var checkboxOtro = document.getElementById('otro');
+                var inputOtroTexto = document.getElementById('otro-texto');
+
+                if (checkboxOtro.checked) {
+                    inputOtroTexto.style.display = "block";
+                } else {
+                    inputOtroTexto.style.display = "none";
+                }
+            }
+
+        function validarFormulario() {
+            const nombreCompleto = document.getElementById("nombre-completo").value; 
+            const correo = document.getElementById("correo-electronico").value;
+            const contrasena = document.getElementById("crear-contrasena").value;
+            const confirmarContrasena = document.getElementById("confirmar-contrasena").value;
+            const cedula = document.getElementById("numero-cedula").value;
+
+
+            // Verificar si el nombre completo está vacío
+            if (!nombreCompleto) {
+                alert("Por favor, inserta tu nombre completo.");
+                return false;
+            }
+
+            // Verificar si el correo está vacío
+            if (!correo) {
+                alert("Por favor, inserta un correo válido.");
+                return false;
+            }
+
+            // Verificar si el formato del correo es correcto
+            const re = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+            if (!re.test(correo)) {
+                alert("Formato de correo electrónico inválido.");
+                return false;
+            }
+
+            // Verificar si las contraseñas coinciden
+            if (contrasena !== confirmarContrasena) {
+                alert("Las contraseñas no coinciden. Por favor, asegúrate de que las contraseñas coincidan.");
+                return false;
+            }
+
+            // Verificar si el número de cédula está vacío
+            if (!cedula) {
+                alert("Por favor, inserta un número de cédula.");
+                return false;
+            }
+
+              // Verificar si el número de teléfono contiene solo números
+            const cedulaRegex = /^\d+$/;
+            if (!cedula.match(cedulaRegex)) {
+                alert("Por favor, inserta solo números en el número de cédula.");
+                return false;
+            }
+
+            // Verificar si el técnico ha seleccionado al menos dos especialidades
+            var checkboxes = document.querySelectorAll('input[name="especialidad"]:checked');
+            if (checkboxes.length < 2) {
+                alert("Por favor, selecciona al menos dos especialidades.");
+                return false;
+            }
+
+            // Si todo está bien, permitir el envío del formulario
+             formEnviado = true;
+            alert("Tu registro ha sido exitoso. Bienvenido al grupo, " + nombreCompleto + ".");
+            return true;
+            }
+
+        window.onbeforeunload = function() {
+            if (!formEnviado) {
+                return "¿Seguro que quieres salir? Aún no has guardado tu registro.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <h1>-=|Registro de Técnicos|=-</h1>
+        <form onsubmit="return validarFormulario()">
+            <label for="nombre-completo">Nombre completo:</label>
+            <input type="text" id="nombre-completo">
+            <label for="correo-electronico">Correo electrónico:</label>
+            <input type="email" id="correo-electronico">
+            <label for="crear-contrasena">Crear contraseña:</label>
+            <input type="password" id="crear-contrasena">
+            <label for="confirmar-contrasena">Confirmar contraseña:</label>
+            <input type="password" id="confirmar-contrasena">
+            <label for="numero-cedula">Número de cédula:</label>
+            <input type="text" id="numero-cedula">
+            <label for="copia-cedula">Copia de cédula:</label>
+            <input type="file" id="copia-cedula" required>
+            <label for="especialidades">Especialidades:</label>
+            <div id="checkbox-container">
+                <input type="checkbox" id="seguridad" name="especialidad" value="Seguridad Informática"> Seguridad Informática<br>
+                <input type="checkbox" id="optimizacion" name="especialidad" value="Configuración de Sistemas"> Configuración de Sistemas<br>
+                <input type="checkbox" id="perifericos" name="especialidad" value="Configuracion de Periféricos"> Configuracion de Periféricos<br>
+                <input type="checkbox" id="recuperacion" name="especialidad" value="Recuperación de Datos"> Recuperación de Datos<br>
+                <input type="checkbox" id="consultoria" name="especialidad" value="Consultoria Tecnológica"> Consultoria Tecnológica<br>
+                <input type="checkbox" id="otro" name="especialidad" value="Otro" onclick="mostrarOcultarOtro()"> Otro<br>
+                <input type="text" id="otro-texto" style="display: none;">
+            </div>
+            <!-- Agregar más opciones según sea necesario -->
+
+            <label for="experiencia">Experiencia laboral:</label>
+             <textarea id="experiencia" rows="4" placeholder="Ingrese su experiencia laboral..."></textarea>
+            <button type="submit">Guardar</button>
+            <button type="button" onclick="window.location.href='../index.html';" class="back-btn">Volver</button>
+        </form>
+    </div>
+</body>
+</html>

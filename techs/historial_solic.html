@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Atendimientos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: gray;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .logo {
+            display: block;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            background-color: white;
+            border-radius: auto;
+            background-image: url('../img/itech.PNG');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .back-btn {
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #007bff;
+            background-color: transparent;
+            border: 1px solid #007bff;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .back-btn:hover {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <h1><u>-=|Historial de Solicitudes|=-</u></h1>
+        <table>
+            <tr>
+                <th>Nº de Solicitud</th>
+                <th>Nombre del Usuario</th>
+                <th>Descripción del Problema</th>
+                <th>Tiempo Gastado</th>
+                <th>Valor a Cobrar</th>
+            </tr>
+            <tr>
+                <td>11278</td>
+                <td>Maria Pérez</td>
+                <td>Necesito ayuda para actualizar mi paquete Office 2016.</td>
+                <td>1 hora</td>
+                <td>G$ 100.000</td>
+            </tr>
+            <tr>
+                <td>11212</td>
+                <td>Juan Rodríguez</td>
+                <td>Necesito descargar y actualizar NetFramework</td>
+                <td>1.5 horas</td>
+                <td>G$ 150.000</td>
+            </tr>
+            <tr>
+                <td>11020</td>
+                <td>Carlos Sánchez</td>
+                <td>Software de ofimática no funciona</td>
+                <td>1 hora</td>
+                <td>G$ 100.000</td>
+            </tr>
+        </table>
+        <button class="back-btn" onclick="window.location.href='../techs/tecnicos_perfil.html';">Volver</button>
+    </div>
+</body>
+</html>

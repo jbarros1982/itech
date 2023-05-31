@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Solicitudes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: gray;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        .logo {
+            display: block;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            background-color: white;
+            border-radius: auto;
+            background-image: url('../img/itech.PNG');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+        .tech-info {
+            display: flex;
+            align-items: left;
+            margin-bottom: 20px;
+            flex-direction: column;
+        }
+
+        .tech-details {
+            text-align: left;
+            margin-top: 10px;
+        }
+        .tech-avatar {
+            width: 50px;
+            height: 50px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin-right: 10px;
+            background-image: url('../img/tecnico2.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .tech-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .requests-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .request-item {
+            padding: 10px;
+            border: 1px solid #007bff;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        .request-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 5px;
+        }
+        .request-description {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .request-button {
+            padding: 8px 15px;
+            font-size: 14px;
+            color: green;
+            background-color: transparent;
+            border: 1px solid green;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .request-button:hover {
+            background-color: green;
+            color: white;
+        }
+        .reject-button {
+            padding: 8px 15px;
+            font-size: 14px;
+            color: red;
+            background-color: transparent;
+            border: 1px solid red;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .reject-button:hover {
+            background-color: red;
+            color: white;
+        }
+        .back-btn {
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #007bff;
+            background-color: transparent;
+            border: 1px solid #007bff;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .back-btn:hover {
+            background-color: #007bff;
+            color: white;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 5px;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-close {
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            margin-top: 10px;
+        }
+
+        .online-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .online {
+            background-color: green;
+        }
+
+        .offline {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="logo"></div>
+                    <span class="modal-close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p><font color="blue"><strong>Aguardando que el cliente acepte la conexión remota...</strong></font></p>
+                </div>
+            </div>
+        </div>
+        <div class="logo"></div>
+        <h1>-=|Gestión de Solicitudes|=-</h1>
+        <div class="tech-info">
+            <div class="tech-avatar"></div>
+            <div class="tech-details">
+                <div class="tech-name">José Barros da Silva</div>
+                <div class="tech-mail"><i>josebarrosdasilva@outlook.es</i></div>
+            </div>
+        </div>
+        <ul class="requests-list">
+            <li class="request-item">
+                <div class="request-title">Solicitud 11278</div>
+                <div class="request-description"><i>Descripción:</i> <strong>Necesito ayuda para actualizar mi paquete Office 2016.</strong></div>
+                <div class="request-specialty"><i>Especialidad Requerida:</i> <strong>Seguridad</strong></div>
+                <div class="online-indicator online"></div>
+                <button class="request-button" onclick="acceptRequest()">Aceptar solicitud</button>
+                <button class="reject-button" onclick="rejectRequest(this)">Rechazar solicitud</button>
+            </li>
+            <li class="request-item">
+                <div class="request-title">Solicitud 13213</div>
+                <div class="request-description"><i>Descripción:</i> <strong>Mi computadora está muy lenta y no responde como antes.</strong></div>
+                <div class="request-specialty"><i>Especialidad Requerida:</i> <strong>Optimización del Sistema</strong></div>
+                <div class="online-indicator offline"></div>
+                <button class="request-button" onclick="acceptRequest()">Aceptar solicitud</button>
+                <button class="reject-button" onclick="rejectRequest(this)">Rechazar solicitud</button>
+            </li>
+            <li class="request-item">
+                <div class="request-title">Solicitud 13397</div>
+                <div class="request-description"><i>Descripción:</i> <strong>Necesito ayuda para configurar mi nueva impresora inalámbrica.</strong></div>
+                <div class="request-specialty"><i>Especialidad Requerida:</i> <strong>Configuración de Periféricos</strong></div>
+                <div class="online-indicator offline"></div>
+                <button class="request-button" onclick="acceptRequest()">Aceptar solicitud</button>
+                <button class="reject-button" onclick="rejectRequest(this)">Rechazar solicitud</button>
+            </li>
+            <li class="request-item">
+                <div class="request-title">Solicitud 14305</div>
+                <div class="request-description"><i>Descripción:</i> <strong>Accidentalmente borré archivos importantes y necesito recuperarlos.</strong></div>
+                <div class="request-speciality"><i>Especialidad Requerida:</i> <strong>Recuperación de Datos</strong></div>
+                <div class="online-indicator offline"></div>
+                <button class="request-button" onclick="acceptRequest()">Aceptar solicitud</button>
+                <button class="reject-button" onclick="rejectRequest(this)">Rechazar solicitud</button>
+            </li>
+            <li class="request-item">
+                <div class="request-title">Solicitud 14712</div>
+                <div class="request-description"><i>Descripción:</i> <strong>Necesito asesoría para elegir el mejor software de gestión para mi empresa.</strong></div>
+                <div class="request-specialty"><i>Especialidad Requerida:</i> <strong>Consultoría Tecnológica</strong></div>
+                <div class="online-indicator offline"></div>
+                <button class="request-button" onclick="acceptRequest()">Aceptar solicitud</button>
+                <button class="reject-button" onclick="rejectRequest(this)">Rechazar solicitud</button>
+            </li>
+        </ul>
+        <button class="back-btn">Volver</button>
+    </div>
+    <script>
+        document.querySelector('.back-btn').addEventListener('click', function() {
+            window.history.back();
+        });
+
+        function acceptRequest() {
+            const onlineIndicator = event.target.previousElementSibling;
+            if (onlineIndicator.classList.contains('online')) {
+                document.getElementById('modal').style.display = 'block';
+            } else {
+                alert('El cliente está offline. Por favor, espera a que vuelva a estar en línea.');
+            }
+        }
+
+        function rejectRequest(button) {
+            var listItem = button.closest('.request-item');
+            listItem.parentNode.removeChild(listItem);
+        }
+
+        document.querySelector('.modal-close').addEventListener('click', function() {
+            document.getElementById('modal').style.display = 'none';
+        });
+
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        const requestItems = document.querySelectorAll('.request-item');
+        requestItems.forEach(function(item, index) {
+            const onlineIndicator = item.querySelector('.online-indicator');
+            const acceptButton = item.querySelector('.request-button');
+
+            if (index !== 0 && onlineIndicator.classList.contains('offline')) {
+                acceptButton.style.backgroundColor = 'gray';
+                acceptButton.style.color = 'white';
+                acceptButton.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>
+
